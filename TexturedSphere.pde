@@ -6,7 +6,7 @@ class TexturedSphere {
   float SINCOS_PRECISION = 0.5;
   int SINCOS_LENGTH = int(360.0 / SINCOS_PRECISION);
   int sDetail = 35;  // Sphere detail setting
-
+  int rot = 100;
   TexturedSphere() {
   }
 
@@ -66,12 +66,13 @@ class TexturedSphere {
     float iv= (float) (t.height-1) / (sDetail);
     float u=0, v=iv;
     for (int i = 0; i < sDetail; i++) {
-      vertex(0, -r, 0,u,0);
-      vertex(sphereX[i] * r, sphereY[i] * r, sphereZ[i] * r, u, v);
+      vertex(0, -r-rot, 0,u,0);
+      vertex(sphereX[i] * r+rot, sphereY[i] * r, sphereZ[i] * r, u, v);
       u+=iu;
     }
-    vertex(0, -r, 0,u,0);
-    vertex(sphereX[0]*r, sphereY[0]*r, sphereZ[0]*r, u, v);
+    vertex(0, -r-rot, 0,u,0);
+    vertex(sphereX[0]*r-rot, sphereY[0]*r, sphereZ[0]*r, u, v);
+  
     endShape();   
 
     // Middle rings
