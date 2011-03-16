@@ -7,10 +7,11 @@ class Orbiter extends TexturedSphere {
   float d = 0, orbitdays = 0;
   color c = color(255, 126, 45);
   Orbiter parent;
-
+  float rotationV;
+  float rotation=0.0;
   PImage texmap;
   boolean usingTexture = false;
-
+  int runs =0;
   Orbiter() {
   }
 
@@ -20,17 +21,18 @@ class Orbiter extends TexturedSphere {
     initializeSphere(35);
   }
 
-  void draw()
-  {
+  void draw() {
     pushMatrix();
+
     if (parent == null) {
       translate(x, y, z);
     }
     else {
       translate(x + parent.x, y + parent.y, z + parent.z);
     }
+    if(rotater == true) runs++;
     if(orbitdays > 0) {
-      rotateY(frameCount / orbitdays);
+      rotateY(runs / orbitdays);
     }
     if (DRAW_ORBITS) {
       pushMatrix();
@@ -48,17 +50,19 @@ class Orbiter extends TexturedSphere {
 
     if (usingTexture) {
       // draw textured sphere
-      texturedSphere(r, texmap);
+      texturedSphere(r, texmap,rotation,rotationV);
+      rotation+=rotationV;
     } 
     else {
+      rotateY(rotation);
+      rotation+=rotationV;
       sphere(r);
     }
 
     popMatrix();
   }
 
-  void draworbit()
-  {
+  void draworbit() {
   }
 }
 

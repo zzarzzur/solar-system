@@ -57,10 +57,13 @@ class TexturedSphere {
   }
 
   // Generic routine to draw textured sphere
-  void texturedSphere(float r, PImage t) 
+  void texturedSphere(float r, PImage t, float rotation, float rotationV) 
   {
     int v1, v11, v2;
     beginShape(TRIANGLE_STRIP);
+
+    rotateY(rotation+rotationV);
+
     texture(t);
     float iu= (float) (t.width-1) / (sDetail);
     float iv= (float) (t.height-1) / (sDetail);
@@ -75,6 +78,7 @@ class TexturedSphere {
     endShape();   
 
     // Middle rings
+
     int voff = 0;
     for(int i = 2; i < sDetail; i++) {
       v1=v11=voff;
