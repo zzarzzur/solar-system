@@ -36,6 +36,7 @@ void setup ()
   sun.x = 0;
   sun.y = 0;
   sun.rotationV=0.1;
+  sun.direction=RIGHT;
 
   mercury = new Orbiter();
   mercury.parent = sun;
@@ -45,6 +46,7 @@ void setup ()
   mercury.r = 7;
   mercury.c = color(185);
   mercury.rotationV=0.15;
+mercury.direction=LEFT;
 
   venus = new Orbiter();
   venus.parent = sun;
@@ -54,6 +56,7 @@ void setup ()
   venus.r = 12;
   venus.c = color(85,30,10);
   venus.rotationV=0.15;
+  venus.direction=LEFT;
 
   earth = new Orbiter();
   earth.parent = sun;
@@ -63,6 +66,7 @@ void setup ()
   earth.r = 13;
   earth.c = color(5, 98, 210);
   earth.rotationV=0.15;
+  earth.direction=RIGHT;
 
   mars = new Orbiter();
   mars.parent = sun;
@@ -72,6 +76,7 @@ void setup ()
   mars.r = 10;
   mars.c = color(250, 8, 0);
   mars.rotationV=0.15;
+  mars.direction=LEFT;
 
   jupiter =  new Orbiter();
   jupiter.setTexture("jupiter.jpg");
@@ -81,6 +86,7 @@ void setup ()
   jupiter.r = 31;
   jupiter.c = color(80, 45, 5);
   jupiter.rotationV=0.15;
+  jupiter.direction=RIGHT;
 
   saturn =  new Orbiter();
   saturn.parent = sun;
@@ -90,6 +96,7 @@ void setup ()
   saturn.r = 16;
   saturn.c = color(130, 55, 0);
   saturn.rotationV=0.15;
+  saturn.direction=LEFT;
 
   uranus =  new Orbiter();
   uranus.parent = sun;
@@ -99,6 +106,7 @@ void setup ()
   uranus.r = 17;
   uranus.c = color(10, 100, 200);
   uranus.rotationV=0.15;
+  uranus.direction=LEFT;
 
   neptune =  new Orbiter();
   neptune.parent = sun;
@@ -108,6 +116,7 @@ void setup ()
   neptune.r = 15;
   neptune.c = color(7, 77, 222);
   neptune.rotationV=0.15;
+  neptune.direction=LEFT;
 
   pluto =  new Orbiter();
   pluto.parent = sun;
@@ -117,6 +126,7 @@ void setup ()
   pluto.r = 6;
   pluto.c = color(111, 55, 10);
   pluto.rotationV=0.15;
+  pluto.direction=LEFT;
 
   textFont(createFont("Ariel",15));
   face = loadImage("face.jpg");
@@ -177,8 +187,8 @@ void draw()
 
     if(keyCode == UP) sun.x+=10;             //Zoom In
     if(keyCode == DOWN) sun.x-=10;           //Zoom Out
-    if(keyCode == LEFT) sun.y+=10;       //Level Up
-    if(keyCode == RIGHT) sun.y-=10;        //Level Down
+    if(keyCode == LEFT) sun.z-=10;       //Level Up
+    if(keyCode == RIGHT) sun.z+=10;        //Level Down
     if(key == 'r') setup();                //Restart
     if(key == 'b') sc = true;                //Restart
   }

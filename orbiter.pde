@@ -12,6 +12,7 @@ class Orbiter extends TexturedSphere {
   PImage texmap;
   boolean usingTexture = false;
   int runs =0;
+  char direction;
   Orbiter() {
   }
 
@@ -50,8 +51,11 @@ class Orbiter extends TexturedSphere {
 
     if (usingTexture) {
       // draw textured sphere
-      texturedSphere(r, texmap,rotation,rotationV);
-      rotation+=rotationV;
+      if(direction == LEFT || direction == UP) rotation-=rotationV;
+      if(direction == RIGHT || direction == DOWN) rotation+=rotationV;
+      texturedSphere(r, texmap,rotation,rotationV,direction);
+      
+      
     } 
     else {
       rotateY(rotation);

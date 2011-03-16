@@ -57,13 +57,14 @@ class TexturedSphere {
   }
 
   // Generic routine to draw textured sphere
-  void texturedSphere(float r, PImage t, float rotation, float rotationV) 
+  void texturedSphere(float r, PImage t, float rotation, float rotationV, char direction) 
   {
     int v1, v11, v2;
     beginShape(TRIANGLE_STRIP);
 
-    rotateY(rotation+rotationV);
-
+    if(direction != DOWN && direction != UP) rotateY(rotation);
+    if(direction == DOWN || direction == UP) rotateZ(rotation);
+    
     texture(t);
     float iu= (float) (t.width-1) / (sDetail);
     float iv= (float) (t.height-1) / (sDetail);
